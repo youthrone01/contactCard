@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Contact Card</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="style.css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $('form').submit(function(){
+                    var name = $("input[name='first_name']").val()+" "+$("input[name='last_name']").val();
+                    var descrip = $("textarea[name='description']").val();
+                    var newUser = "<div class='user'><h1>"+name+"</h1><p class='forclick'>Click for description</p><p class='details'>"+descrip+"</p></div>"
+                    $('.display').append(newUser);
+                    return false;
+                })
+
+                $(document).on("click",".forclick",function(){
+                    $(this).siblings('h1').hide();
+                    $(this).hide();
+                    $(this).siblings('.details').show();
+                })
+            })
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <form>
+                First name:<input type="text" name="first_name" placeholder="First Name">
+                Last name:<input type="text" name="last_name" placeholder="Last Name">
+                <h3>Description</h3>
+                <textarea id="description" name="description" placeholder="Enter Description"></textarea>
+                <input type="submit" value="Add User">
+            </form>
+            <div class="display">
+                <div class="user">
+                    <h1>Michael Choi</h1>
+                    <p class="forclick">Click for description</p>
+                    <p class="details"></p>
+                </div>
+            </div>
+        </div>
+    
+    </body>
+</html>
